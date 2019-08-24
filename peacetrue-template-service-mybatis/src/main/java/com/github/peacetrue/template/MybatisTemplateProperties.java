@@ -1,4 +1,4 @@
-package com.github.peacetrue.template.mybatis;
+package com.github.peacetrue.template;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

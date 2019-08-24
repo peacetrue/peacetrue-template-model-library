@@ -1,18 +1,17 @@
-DROP TABLE IF EXISTS task;
-CREATE TABLE task
+DROP TABLE IF EXISTS demo;
+CREATE TABLE demo
 (
     id            BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    group_id      VARCHAR(255)                      NOT NULL COMMENT '任务组标识，一组任务共同完成一个目标',
-    name          VARCHAR(63)                       NOT NULL COMMENT '任务名称',
-    input         VARCHAR(1022) COMMENT '输入参数，json格式数组',
-    body          VARCHAR(510)                      NOT NULL COMMENT '任务执行内容，spel表达式',
-    state_code    VARCHAR(31)                       NOT NULL COMMENT 'todo,doing,success,failure',
-    output        VARCHAR(255)                      NULL COMMENT '输出参数，json格式对象',
-    exception     VARCHAR(255)                      NULL COMMENT '异常信息',
-    duration      LONG                              NULL COMMENT '耗时，单位毫秒',
+    code          VARCHAR(255)                      NOT NULL COMMENT '编码',
+    name          VARCHAR(255)                      NOT NULL COMMENT '名称',
     creator_id    BIGINT                            NOT NULL COMMENT '创建者主键',
     created_time  DATETIME                          NOT NULL COMMENT '创建时间',
     modifier_id   BIGINT                            NOT NULL COMMENT '创建者主键',
     modified_time DATETIME                          NOT NULL COMMENT '创建时间'
 );
+
+
+insert into demo (code, name, creator_id, created_time, modifier_id, modified_time)
+values ('1', '1', 1, '2010-01-01 01:01:01', 2, '2010-01-01 01:01:01');
+
 

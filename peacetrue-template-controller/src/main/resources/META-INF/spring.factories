@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.peacetrue.template.ControllerTaskAutoConfiguration
+  com.github.peacetrue.template.ControllerTemplateAutoConfiguration
