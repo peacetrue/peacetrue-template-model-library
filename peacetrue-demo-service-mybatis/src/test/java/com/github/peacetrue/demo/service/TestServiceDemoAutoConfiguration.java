@@ -19,6 +19,6 @@ import org.springframework.context.annotation.PropertySource;
         PageHelperAutoConfiguration.class,
         ServiceDemoAutoConfiguration.class,
 })
-@PropertySource("classpath:application-datasource.properties")
+@PropertySource("classpath:application-demo-service-test.properties")
 public class TestServiceDemoAutoConfiguration {
 }
