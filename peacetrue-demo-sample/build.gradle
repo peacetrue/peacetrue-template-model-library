@@ -1,0 +1,14 @@
+description '模板样章'
+
+dependencies {
+    compile 'ch.qos.logback:logback-classic'
+    compile 'com.github.peacetrue:peacetrue-spring:1.1.2-SNAPSHOT'
+    compile project(":peacetrue-demo-controller")
+    compile project(":peacetrue-demo-service-mybatis")
+    compile project(":peacetrue-demo-type")
+    compile project(path: ':peacetrue-demo-service-mybatis', configuration: 'testArtifacts')
+    compile 'com.github.peacetrue:peacetrue-result-web'
+    compile 'com.github.peacetrue:peacetrue-result-exception-support'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+
+}

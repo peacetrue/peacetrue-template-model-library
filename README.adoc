@@ -55,8 +55,8 @@ image::structure.png[]
 
 
 == 示例项目
-* 运行``peacetrue-template-sample/src/main/java/com/github/peacetrue/template/TemplateApplication.java``启动服务
-* 运行``cd peacetrue-template-ui && npm start``查看页面效果
+* 运行``peacetrue-demo-sample/src/main/java/com/github/peacetrue/demo/DemoApplication.java``启动服务
+* 运行``cd peacetrue-demo-ui && npm start``查看页面效果
 
 
 == maven配置
@@ -75,7 +75,7 @@ image::structure.png[]
 ----
 <dependency>
   <groupId>com.github.peacetrue.template</groupId>
-  <artifactId>peacetrue-template-service-api</artifactId>
+  <artifactId>peacetrue-demo-service-api</artifactId>
   <version>1.0-SNAPSHOT</version>
 </dependency>
 ----
@@ -85,7 +85,7 @@ image::structure.png[]
 ----
 <dependency>
   <groupId>com.github.peacetrue.template</groupId>
-  <artifactId>peacetrue-template-service-mybatis</artifactId>
+  <artifactId>peacetrue-demo-service-mybatis</artifactId>
   <version>1.0-SNAPSHOT</version>
 </dependency>
 ----
@@ -95,7 +95,7 @@ image::structure.png[]
 ----
 <dependency>
   <groupId>com.github.peacetrue.template</groupId>
-  <artifactId>peacetrue-template-controller</artifactId>
+  <artifactId>peacetrue-demo-controller</artifactId>
   <version>1.0-SNAPSHOT</version>
 </dependency>
 ----
@@ -105,7 +105,7 @@ image::structure.png[]
 ----
 <dependency>
   <groupId>com.github.peacetrue.template</groupId>
-  <artifactId>peacetrue-template-ui</artifactId>
+  <artifactId>peacetrue-demo-ui</artifactId>
   <version>1.0-SNAPSHOT</version>
 </dependency>
 ----
