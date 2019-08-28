@@ -21,10 +21,10 @@ v1.0, 2019-08-01: SNAPSHOT
 * mybatis:3.6+
 * vue:2.6+
 * iview:3.4+
+* webpack:4.34+
 
 == 模块结构
 image::structure.png[]
-
 
 == 系统功能
 
@@ -112,6 +112,6 @@ image::structure.png[]
 
 == 技术细节
 
-
+=== 编辑页转详情页
 
 
