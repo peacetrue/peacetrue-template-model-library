@@ -5,7 +5,7 @@ dependencies {
     api 'com.github.peacetrue:peacetrue-result'
     api 'com.github.peacetrue:spring-data-commons-page'
     api 'com.google.code.findbugs:jsr305'
-    compileOnly 'javax.validation:validation-api'
+    api 'javax.validation:validation-api'
     compileOnly 'com.github.peacetrue:peacetrue-validation'
 
 }
