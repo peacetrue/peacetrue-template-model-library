@@ -1,6 +1,6 @@
 name: peacetrue-template-model-library
 title: 模型类库模板
-version: master
+version: 2.0-SNAPSHOT
 start_page: introduction.adoc
 nav:
   - modules/ROOT/nav.adoc
