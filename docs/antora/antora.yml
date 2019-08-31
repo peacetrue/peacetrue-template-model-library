@@ -1,0 +1,5 @@
+name: peacetrue-template-model-library
+title: 模型类库模板
+version: master
+nav:
+  - modules/ROOT/nav.adoc
