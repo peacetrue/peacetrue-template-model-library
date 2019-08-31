@@ -1,0 +1,4 @@
+= 样章
+
+* 运行``peacetrue-demo-sample/src/main/java/com/github/peacetrue/demo/DemoApplication.java``启动服务
+* 运行``cd peacetrue-demo-ui && npm start``查看页面效果

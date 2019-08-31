@@ -1,0 +1,13 @@
+= 用法
+
+== 打开模板Git地址
+https://github.com/peacetrue/peacetrue-template-model-library/tree/snapshot/2.0[peacetrue-template-model-library^]
+
+== 使用模板
+image::use-template.png[]
+
+== 修改模块名
+使用模板生成资源库后检出到本地修改模块名。
+所有涉及到``Demo``的地方，都需要改成自己模块的名称。
+
+没有**maven-archetype**用着方便，不用改模块名，自动生成时就已经改了。
