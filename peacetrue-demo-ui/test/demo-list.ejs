@@ -22,7 +22,7 @@
 </head>
 <body>
 <div id="container">
-    <demo-list url="http://localhost:8081/demos"></demo-list>
+    <demo-list url="http://localhost:8082/demos" unique-url="http://localhost:8082/common/demos/unique"></demo-list>
 </div>
 <script>
     //处理参数和数据
@@ -33,6 +33,13 @@
     axios.defaults.transformRequest.unshift(function (data, headers) {
         return Qs.stringify(data, {arrayFormat: 'repeat', serializeDate: (d) => d.getTime(), allowDots: true});
     });
+
+    axios.interceptors.response.use(function (result) {
+        let data = result.data || {};
+        if (data.code === 'success') return Promise.resolve(data.data);
+        return Promise.reject(data);
+    });
+
     let vue = new Vue({
         el: '#container',
         data() {

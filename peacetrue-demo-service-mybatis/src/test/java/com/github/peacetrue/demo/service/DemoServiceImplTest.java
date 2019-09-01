@@ -25,8 +25,8 @@ public class DemoServiceImplTest {
     public static final DemoAdd<Long> DEMO_ADD = new DemoAdd<>();
 
     static {
-        DEMO_ADD.setCode("1");
-        DEMO_ADD.setName("1");
+        DEMO_ADD.setCode("2");
+        DEMO_ADD.setName("2");
         DEMO_ADD.setOperatorId(1L);
     }
 

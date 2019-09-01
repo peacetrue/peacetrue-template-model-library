@@ -19,7 +19,7 @@ subprojects { project ->
     dependencyManagement {
         imports {
             mavenBom "org.springframework.boot:spring-boot-dependencies:1.5.20.RELEASE"
-            mavenBom "com.github.peacetrue:peacetrue-dependencies:1+"
+            mavenBom "com.github.peacetrue:peacetrue-dependencies:1.0-SNAPSHOT"
         }
     }
 
@@ -92,6 +92,7 @@ subprojects { project ->
             }
         }
 
+        //TODO 如何判断gradle.properties中有没有指定的属性
         repositories {
             maven {
                 url version.endsWith("SNAPSHOT") ? repository_snapshots : repository_releases

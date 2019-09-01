@@ -41,6 +41,7 @@ public class DemoServiceImpl implements DemoService {
         demo.setCreatedTime(new Date());
         demo.setModifierId(params.getOperatorId());
         demo.setModifiedTime(demo.getCreatedTime());
+        logger.debug("保存信息[{}]", demo);
         int count = demoMapper.insertSelective(demo);
         logger.debug("共影响[{}]条记录", count);
         return to(demo);

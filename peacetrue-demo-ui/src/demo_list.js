@@ -1,8 +1,9 @@
 let {Card, Form, FormItem, Input, Icon, Button, InputNumber, DatePicker} = require('iview/dist/iview');
-let PageTable = require('peacetrue-iview/src/components/page-table');
+let PageTable = require('peacetrue-iview/dist/components/page-table');
 let Axios = require('axios');
 let Lodash = require('lodash');
-let PromiseConfirm = require('peacetrue-iview/src/mixins/promise-confirm');
+let PromiseConfirm = require('peacetrue-iview/dist/mixins/promise-confirm');
+let Validator = require('peacetrue-js/dist/peace.async-validator');
 
 module.exports = {
     name: 'DemoList',
@@ -42,7 +43,7 @@ module.exports = {
         </Card>
         <Modal v-model="detail.model" :title="detail.title">
             <Form ref="detail" :model="detail.data" :rules="detail.rules" :label-width="100">
-                <FormItem label="编号" prop="code" :rules="{required:true,type:'string',min:1,max:255}">
+                <FormItem label="编号" prop="code" :rules="[{required:true,type:'string',min:1,max:255},detail.rules.code]">
                     <i-input type="text" v-model="detail.data.code" placeholder="必填、长度1~255" :readonly="detail.readonly" :class="detail.style"></i-input>
                 </FormItem>
                 <FormItem label="姓名" prop="name" :rules="{required:true,type:'string',min:1,max:255}">
@@ -65,8 +66,9 @@ module.exports = {
     `,
     props: {
         url: {type: String, required: false, default: '/demos'},
-        params: {type: Object, required: false, default() {return {page: 0, size: 10, code: null, name: null, createdTime: {}};}},
-        successFormat: {type: Function, required: false, default(data) {return data.data;}},
+        uniqueUrl: {type: String, required: false, default: '/common/demos/unique'},
+        params: {type: Object, required: false, default() {return {page: 0, size: 10, code: null, name: null, createdTime: {lowerBound: null, upperBound: null}};}},
+        successFormat: {type: Function, required: false, default(data) {return data;}},
         columns: {
             type: Array, required: false, default() {
                 return [
@@ -89,7 +91,10 @@ module.exports = {
                 loading: false,
                 data: {},
                 readonly: false,
-                style: null
+                style: null,
+                rules: {
+                    code: Validator.simplified.unique(this.uniqueUrl)
+                }
             },
         };
     },
@@ -125,6 +130,7 @@ module.exports = {
             this.detail.data = {};
             this.detail.readonly = false;
             this.detail.style = null;
+            this.detail.rules.code.unique.original = null;
             this.$refs.form.resetFields();
             this.save = this.add;
         },
@@ -149,6 +155,7 @@ module.exports = {
             this.detail.data = Lodash.merge({}, row);
             this.detail.readonly = false;
             this.detail.style = null;
+            this.detail.rules.code.unique.original = row.code;
             this.$refs.form.resetFields();
             this.save = this.modify;
         },

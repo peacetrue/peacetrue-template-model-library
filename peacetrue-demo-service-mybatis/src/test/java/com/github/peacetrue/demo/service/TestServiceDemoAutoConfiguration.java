@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  * @author xiayx
  */
 @Configuration
-@ImportAutoConfiguration({
+@ImportAutoConfiguration(value = {
         DataSourceAutoConfiguration.class,
         DataSourceTransactionManagerAutoConfiguration.class,
         MybatisAutoConfiguration.class,
