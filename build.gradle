@@ -19,13 +19,13 @@ subprojects { project ->
     dependencyManagement {
         imports {
             mavenBom "org.springframework.boot:spring-boot-dependencies:1.5.20.RELEASE"
-            mavenBom "com.github.peacetrue:peacetrue-dependencies:1.0-SNAPSHOT"
+            mavenBom "com.github.peacetrue:peacetrue-dependencies:1.0.4-SNAPSHOT"
         }
     }
 
     group "com.github.peacetrue.template"
     version "1.0-SNAPSHOT"
-    description "模板结构"
+    description "模型类库模板"
 
     apply plugin: "java"
     apply plugin: "java-library"
