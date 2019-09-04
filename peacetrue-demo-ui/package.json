@@ -48,6 +48,7 @@
     "iview": "^3.4.2",
     "jsonpath": "^1.0.2",
     "lodash": "^4.17.15",
+    "peacetrue-async-validator": "^1.0.1",
     "peacetrue-iview": "^1.0.12",
     "peacetrue-js": "^1.0.5",
     "vue": "^2.6.10"

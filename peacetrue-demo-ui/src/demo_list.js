@@ -3,7 +3,7 @@ let PageTable = require('peacetrue-iview/dist/components/page-table');
 let Axios = require('axios');
 let Lodash = require('lodash');
 let PromiseConfirm = require('peacetrue-iview/dist/mixins/promise-confirm');
-let Validator = require('peacetrue-js/dist/peace.async-validator');
+let {Rules, Generator, setFields} = require('peacetrue-async-validator');
 
 module.exports = {
     name: 'DemoList',
@@ -43,10 +43,10 @@ module.exports = {
         </Card>
         <Modal v-model="detail.model" :title="detail.title">
             <Form ref="detail" :model="detail.data" :rules="detail.rules" :label-width="100">
-                <FormItem label="编号" prop="code" :rules="[{required:true,type:'string',min:1,max:255},detail.rules.code]">
+                <FormItem label="编号" prop="code">
                     <i-input type="text" v-model="detail.data.code" placeholder="必填、长度1~255" :readonly="detail.readonly" :class="detail.style"></i-input>
                 </FormItem>
-                <FormItem label="姓名" prop="name" :rules="{required:true,type:'string',min:1,max:255}">
+                <FormItem label="姓名" prop="name">
                     <i-input type="text" v-model="detail.data.name" placeholder="必填、长度1~255" :readonly="detail.readonly" :class="detail.style"></i-input>
                 </FormItem>
                 <template v-if="detail.readonly">
@@ -85,6 +85,7 @@ module.exports = {
         },
     },
     data() {
+        setFields({code: "编号", name: "姓名"});
         return {
             detail: {
                 model: false,
@@ -92,9 +93,10 @@ module.exports = {
                 data: {},
                 readonly: false,
                 style: null,
-                rules: {
-                    code: Validator.simplified.unique(this.uniqueUrl)
-                }
+                rules: Generator.generate({
+                    code: [{required: true}, {min: 1}, {max: 255}, Rules.use('unique', {url: this.uniqueUrl})],
+                    name: [{required: true}, {min: 1}, {max: 255}],
+                })
             },
         };
     },

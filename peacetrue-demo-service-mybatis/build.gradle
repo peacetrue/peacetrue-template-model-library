@@ -28,7 +28,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-autoconfigure"
     compileOnly "org.springframework.boot:spring-boot-configuration-processor"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-    implementation 'com.github.peacetrue.module:peacetrue-module-service-mybatis'
+    implementation 'com.github.peacetrue.module:peacetrue-module-service-mybatis:1.0-SNAPSHOT'
 
     testImplementation 'junit:junit'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
