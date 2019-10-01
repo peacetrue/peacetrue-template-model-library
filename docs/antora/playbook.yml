@@ -10,6 +10,8 @@ content:
   sources:
   - url: ../../
     start_path: ./docs/antora
+  - url: ../../../peacetrue.github.io
+    start_path: ./docs/antora
 asciidoc:
   attributes:
 #    linkattrs: ''
