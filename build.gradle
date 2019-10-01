@@ -3,25 +3,10 @@ plugins {
     id "maven-publish"
     id "signing"
     id "idea"
-    id "org.springframework.boot" version "1.5.20.RELEASE" apply(false)
+    id("io.spring.dependency-management") version "1.0.8.RELEASE"
 }
 
-allprojects {
-    repositories {
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        mavenCentral()
-    }
-}
-
-subprojects { project ->
-
-    apply plugin: "io.spring.dependency-management"
-    dependencyManagement {
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:1.5.20.RELEASE"
-            mavenBom "com.github.peacetrue:peacetrue-dependencies:1.0.4-SNAPSHOT"
-        }
-    }
+allprojects { project ->
 
     group "com.github.peacetrue.template"
     version "1.0-SNAPSHOT"
@@ -30,6 +15,31 @@ subprojects { project ->
     apply plugin: "java"
     apply plugin: "java-library"
     sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    apply plugin: "idea"
+    idea {
+        module {
+            inheritOutputDirs = false
+            outputDir = tasks.compileJava.destinationDir
+            testOutputDir = tasks.compileTestJava.destinationDir
+            downloadSources = true
+            downloadJavadoc = false
+        }
+    }
+
+    repositories {
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        mavenCentral()
+    }
+
+    apply plugin: "io.spring.dependency-management"
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:1.5.20.RELEASE"
+            mavenBom "com.github.peacetrue:peacetrue-dependencies:1.0.4-SNAPSHOT"
+        }
+    }
 
     dependencies {
         compileOnly "org.projectlombok:lombok"
@@ -92,7 +102,6 @@ subprojects { project ->
             }
         }
 
-        //TODO 如何判断gradle.properties中有没有指定的属性
         repositories {
             maven {
                 url version.endsWith("SNAPSHOT") ? repository_snapshots : repository_releases

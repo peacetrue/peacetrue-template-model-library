@@ -1,6 +1,7 @@
 = 简介
 
-模型类库模板是一个模板项目，
+模型类库模板基于 xref:master@peacetrue-template-model-library::index.adoc[gradle 模板项目^]，
+拥有与其一致的项目环境。
 用于支持快速开发基于单模块的组件，
 包含基本的增删改查功能、接口和页面。
 开发出来的组件可以在具体项目中直接使用。

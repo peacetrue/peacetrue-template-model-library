@@ -1,3 +1,7 @@
+plugins {
+    id "org.springframework.boot" version "1.5.20.RELEASE"
+}
+
 description '模板样章'
 
 dependencies {

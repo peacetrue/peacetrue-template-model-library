@@ -1,7 +1,7 @@
 = 用法
 
-== 打开模板Git地址
-https://github.com/peacetrue/peacetrue-template-model-library/tree/snapshot/2.0[peacetrue-template-model-library^]
+== 打开 github 模板地址
+https://github.com/peacetrue/peacetrue-template-model-library[peacetrue-template-model-library^]
 
 == 使用模板
 image::use-template.png[]
@@ -11,3 +11,8 @@ image::use-template.png[]
 所有涉及到``Demo``的地方，都需要改成自己模块的名称。
 
 没有**maven-archetype**用着方便，不用改模块名，自动生成时就已经改了。
+
+== 运行样章
+
+* 运行``peacetrue-demo-sample/src/main/java/com/github/peacetrue/demo/DemoApplication.java``启动服务
+* 运行``cd peacetrue-demo-ui && npm start``查看页面效果
