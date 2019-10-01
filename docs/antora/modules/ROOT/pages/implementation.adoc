@@ -1,7 +1,7 @@
 = 实现
 
 == 运行环境
-* java:8
+* java:8+
 * gradle:5.6.2
 * spring-boot:1.5.x
 * mybatis:3.6
