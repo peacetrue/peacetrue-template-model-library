@@ -32,13 +32,26 @@ let config = {
         globalObject: 'this',
     },
     externals: {
+        'vue': 'vue',
         'iview/dist/iview': 'iview',
         'axios': 'axios',
-        'peacetrue-iview/src/components/page-table': {
+        'lodash': {
+            root: '_',
+            commonjs: 'lodash',
+            commonjs2: 'lodash',
+            amd: 'lodash',
+        },
+        'peacetrue-iview/dist/components/page-table': {
             root: ['PeaceIview', 'PageTable'],
             commonjs: 'peacetrue-iview/src/components/page-table',
             commonjs2: 'peacetrue-iview/src/components/page-table',
             amd: 'peacetrue-iview/src/components/page-table'
+        },
+        'peacetrue-async-validator/dist/peace.async-validator': {
+            root: ['Peace', 'AsyncValidator'],
+            commonjs: 'peacetrue-async-validator/dist/peace.async-validator',
+            commonjs2: 'peacetrue-async-validator/dist/peace.async-validator',
+            amd: 'peacetrue-async-validator/dist/peace.async-validator'
         },
     }
 };

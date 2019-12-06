@@ -3,7 +3,7 @@ let PageTable = require('peacetrue-iview/dist/components/page-table');
 let Axios = require('axios');
 let Lodash = require('lodash');
 let PromiseConfirm = require('peacetrue-iview/dist/mixins/promise-confirm');
-let {Rules, Generator, setFields} = require('peacetrue-async-validator');
+let {Rules, Generator, setFields} = require('peacetrue-async-validator/dist/peace.async-validator');
 
 module.exports = {
     name: 'DemoList',
@@ -94,8 +94,8 @@ module.exports = {
                 readonly: false,
                 style: null,
                 rules: Generator.generate({
-                    code: [{required: true}, {min: 1}, {max: 255}, Rules.use('unique', {url: this.uniqueUrl})],
-                    name: [{required: true}, {min: 1}, {max: 255}],
+                    code: [{required: true}, {max: 255}, Rules.use('unique', {url: this.uniqueUrl})],
+                    name: [{required: true}, {max: 255}],
                 })
             },
         };
@@ -123,6 +123,7 @@ module.exports = {
             this.detail.model = true;
             this.detail.title = '查看示例';
             this.detail.data = row;
+            this.detail.rules.code[2].unique.original = row.code;
             this.detail.readonly = true;
             this.detail.style = 'readonly';
         },
@@ -132,7 +133,7 @@ module.exports = {
             this.detail.data = {};
             this.detail.readonly = false;
             this.detail.style = null;
-            this.detail.rules.code.unique.original = null;
+            this.detail.rules.code[2].unique.original = null;
             this.$refs.form.resetFields();
             this.save = this.add;
         },
@@ -157,7 +158,7 @@ module.exports = {
             this.detail.data = Lodash.merge({}, row);
             this.detail.readonly = false;
             this.detail.style = null;
-            this.detail.rules.code.unique.original = row.code;
+            this.detail.rules.code[2].unique.original = row.code;
             this.$refs.form.resetFields();
             this.save = this.modify;
         },
