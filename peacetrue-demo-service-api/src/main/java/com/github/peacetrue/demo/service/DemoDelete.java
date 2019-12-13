@@ -14,12 +14,12 @@ import javax.validation.constraints.NotNull;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class DemoDelete<Id, OperatorId> extends OperatorCapableImpl<OperatorId> {
+public class DemoDelete extends OperatorCapableImpl<String> {
 
     private static final long serialVersionUID = 0L;
 
     @NotNull
     @Min(1)
-    private Id[] id;
+    private Long[] id;
 
 }

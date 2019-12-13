@@ -7,7 +7,6 @@ import com.github.peacetrue.pagehelper.PageHelperUtils;
 import com.github.peacetrue.spring.util.BeanUtils;
 import com.github.peacetrue.util.EntityNotFoundException;
 import org.mybatis.dynamic.sql.SqlBuilder;
-import org.mybatis.dynamic.sql.SqlColumn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,9 @@ public class DemoServiceImpl implements DemoService {
     private DemoMapper demoMapper;
 
     @Override
-    public <Id, OperatorId> DemoVO<Id, OperatorId> add(DemoAdd<OperatorId> params) {
+    public DemoVO add(DemoAdd params) {
         logger.info("新增信息[{}]", params);
-        Demo<Id, OperatorId> demo = new Demo<>();
+        Demo demo = new Demo();
         BeanUtils.copyProperties(params, demo);
         demo.setCreatorId(params.getOperatorId());
         demo.setCreatedTime(new Date());
@@ -47,20 +46,20 @@ public class DemoServiceImpl implements DemoService {
         return to(demo);
     }
 
-    private <Id, OperatorId> DemoVO<Id, OperatorId> to(Demo<Id, OperatorId> demo) {
-        DemoVO<Id, OperatorId> vo = new DemoVO<>();
+    private DemoVO to(Demo demo) {
+        DemoVO vo = new DemoVO();
         BeanUtils.copyProperties(demo, vo);
         return vo;
     }
 
     @Override
-    public <Id, OperatorId> Page<DemoVO<Id, OperatorId>> query(@Nullable DemoQuery params, @Nullable Pageable pageable) {
+    public Page<DemoVO> query(@Nullable DemoQuery params, @Nullable Pageable pageable) {
         logger.info("分页查询信息[{}]", params);
         if (params == null) params = DemoQuery.DEFAULT;
         if (params.getCreatedTime() == null) params.setCreatedTime(new Range.Date());
         if (pageable == null) pageable = new PageRequest(0, 10, new Sort(Sort.Direction.DESC, "createdTime"));
         PageHelper.startPage(pageable.getPageNumber() + 1, pageable.getPageSize());
-        List<Demo<Id, OperatorId>> entities = demoMapper.<Id, OperatorId>selectByExample()
+        List<Demo> entities = demoMapper.selectByExample()
                 .where(code, SqlBuilder.isLikeWhenPresent(MybatisDynamicUtils.likeValue(params.getCode())))
                 .and(name, SqlBuilder.isEqualToWhenPresent(params.getName()))
                 .and(createdTime, SqlBuilder.isGreaterThanOrEqualToWhenPresent(params.getCreatedTime().getLowerBound()))
@@ -70,16 +69,15 @@ public class DemoServiceImpl implements DemoService {
         logger.debug("共取得'{}'条记录", entities.size());
         if (entities.isEmpty()) return new PageImpl<>(Collections.emptyList());
 
-        List<DemoVO<Id, OperatorId>> vos = entities.stream().map(this::to).collect(Collectors.toList());
+        List<DemoVO> vos = entities.stream().map(this::to).collect(Collectors.toList());
         return new PageImpl<>(vos, pageable, PageHelperUtils.getTotal(entities));
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public <Id, OperatorId> DemoVO<Id, OperatorId> get(DemoGet<Id, OperatorId> params) {
+    public DemoVO get(DemoGet params) {
         logger.info("获取符合条件[{}]的信息", params);
-        return demoMapper.<Id, OperatorId>selectByExample()
-                .where((SqlColumn<Object>) id, SqlBuilder.isEqualTo(params.getId()))
+        return demoMapper.selectByExample()
+                .where(id, SqlBuilder.isEqualTo(params.getId()))
                 .build().execute().stream()
                 .reduce((l, r) -> r)
                 .map(this::to)
@@ -87,9 +85,9 @@ public class DemoServiceImpl implements DemoService {
     }
 
     @Override
-    public <Id, OperatorId> int modify(DemoModify<Id, OperatorId> params) {
+    public int modify(DemoModify params) {
         logger.info("修改信息[{}]", params);
-        Demo<Id, OperatorId> demo = new Demo<>();
+        Demo demo = new Demo();
         BeanUtils.copyProperties(params, demo);
         demo.setModifierId(params.getOperatorId());
         demo.setModifiedTime(new Date());
@@ -99,7 +97,7 @@ public class DemoServiceImpl implements DemoService {
     }
 
     @Override
-    public <T, OperatorId> int delete(DemoDelete<T, OperatorId> params) {
+    public int delete(DemoDelete params) {
         logger.info("删除信息[{}]", params);
         int count = params.getId().length == 1
                 ? demoMapper.deleteByPrimaryKey(params.getId()[0])

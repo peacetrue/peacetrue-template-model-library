@@ -44,7 +44,7 @@ public class DemoApplication {
     @Bean
     public HandlerMethodArgumentConsumer handlerMethodArgumentConsumer(){
         return (HandlerMethodArgumentConsumer<OperatorCapableImpl>) object -> {
-            object.setOperatorId(1);
+            object.setOperatorId("1");
             object.setOperatorName("1");
         };
     }
@@ -77,7 +77,7 @@ public class DemoApplication {
                     @Override
                     protected Object createAttribute(String attributeName, MethodParameter parameter, WebDataBinderFactory binderFactory, NativeWebRequest webRequest) throws Exception {
                         OperatorCapableImpl attribute = (OperatorCapableImpl) super.createAttribute(attributeName, parameter, binderFactory, webRequest);
-                        attribute.setOperatorId(1);
+                        attribute.setOperatorId("1");
                         attribute.setOperatorName("1");
                         return attribute;
                     }

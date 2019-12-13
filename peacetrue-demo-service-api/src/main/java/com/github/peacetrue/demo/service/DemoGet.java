@@ -13,11 +13,11 @@ import javax.validation.constraints.NotNull;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class DemoGet<Id, OperatorId> extends OperatorCapableImpl<OperatorId> {
+public class DemoGet extends OperatorCapableImpl<String> {
 
     private static final long serialVersionUID = 0L;
 
     @NotNull
-    private Id id;
+    private Long id;
 
 }

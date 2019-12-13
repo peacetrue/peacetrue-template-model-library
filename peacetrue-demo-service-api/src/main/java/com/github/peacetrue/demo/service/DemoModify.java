@@ -11,11 +11,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class DemoModify<Id, OperatorId> extends OperatorCapableImpl<OperatorId> {
+public class DemoModify extends OperatorCapableImpl<String> {
 
     private static final long serialVersionUID = 0L;
 
-    private Id id;
+    private Long id;
     private String code;
     private String name;
 }

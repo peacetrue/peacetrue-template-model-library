@@ -12,17 +12,17 @@ import javax.annotation.Nullable;
 public interface DemoService {
 
     /** 新增 */
-    <Id, OperatorId> DemoVO<Id, OperatorId> add(DemoAdd<OperatorId> params) throws ResultException;
+    DemoVO add(DemoAdd params) throws ResultException;
 
     /** 分页查询 */
-    <Id, OperatorId> Page<DemoVO<Id, OperatorId>> query(@Nullable DemoQuery params, @Nullable Pageable pageable) throws ResultException;
+    Page<DemoVO> query(@Nullable DemoQuery params, @Nullable Pageable pageable) throws ResultException;
 
     /** 获取 */
-    <Id, OperatorId> DemoVO<Id, OperatorId> get(DemoGet<Id, OperatorId> params) throws ResultException;
+    DemoVO get(DemoGet params) throws ResultException;
 
     /** 修改 */
-    <Id, OperatorId> int modify(DemoModify<Id, OperatorId> params) throws ResultException;
+    int modify(DemoModify params) throws ResultException;
 
     /** 删除 */
-    <Id, OperatorId> int delete(DemoDelete<Id, OperatorId> params) throws ResultException;
+    int delete(DemoDelete params) throws ResultException;
 }

@@ -9,15 +9,15 @@ import java.util.Date;
  * @author xiayx
  */
 @Data
-public class DemoVO<Id, OperatorId> implements Serializable {
+public class DemoVO implements Serializable {
 
     private static final long serialVersionUID = 0L;
 
-    private Id id;
+    private Long id;
     private String code;
     private String name;
-    private OperatorId creatorId;
+    private String creatorId;
     private Date createdTime;
-    private OperatorId modifierId;
+    private String modifierId;
     private Date modifiedTime;
 }

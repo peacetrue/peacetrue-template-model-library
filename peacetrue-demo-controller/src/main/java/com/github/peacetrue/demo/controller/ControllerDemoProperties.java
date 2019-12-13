@@ -20,6 +20,8 @@ public class ControllerDemoProperties {
 
     @Data
     public static class Urls {
+        /** 基础路径 */
+        private String basePath = "/demos";
         /** 新增地址 */
         private String add;
         /** 查询地址 */
