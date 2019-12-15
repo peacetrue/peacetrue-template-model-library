@@ -49,7 +49,6 @@ public class DemoControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.code").value(DemoServiceImplTest.DEMO_ADD.getCode()));
-
     }
 
     @Test

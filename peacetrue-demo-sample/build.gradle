@@ -8,7 +8,6 @@ dependencies {
     compile 'ch.qos.logback:logback-classic'
     compile 'com.github.peacetrue:peacetrue-spring'
     compile project(":peacetrue-demo-controller")
-    compile project(":peacetrue-demo-type")
     compile project(":peacetrue-demo-service-mybatis")
     compile project(path: ':peacetrue-demo-service-mybatis', configuration: 'testArtifacts')
     compile 'com.github.peacetrue:peacetrue-result-web'

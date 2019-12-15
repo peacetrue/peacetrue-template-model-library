@@ -49,6 +49,7 @@ allprojects { project ->
         testImplementation "junit:junit"
         testCompileOnly "org.projectlombok:lombok"
         testAnnotationProcessor "org.projectlombok:lombok"
+        testCompile 'io.github.benas:random-beans'
     }
 
     if (name.endsWith("sample") || name.endsWith("ui")) return

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
@@ -17,6 +18,7 @@ import java.util.Objects;
 @Configuration
 @EnableConfigurationProperties(ServiceDemoProperties.class)
 @MapperScan(basePackageClasses = ServiceDemoAutoConfiguration.class, annotationClass = Mapper.class)
+@ComponentScan(basePackageClasses = ServiceDemoAutoConfiguration.class)
 @PropertySource("classpath:/application-demo-service.properties")
 public class ServiceDemoAutoConfiguration {
 
@@ -29,11 +31,6 @@ public class ServiceDemoAutoConfiguration {
     @Bean
     public AssociatedSourceBuilder associatedSourceBuilder() {
         return new AssociatedSourceBuilderImpl();
-    }
-
-    @Bean
-    public DemoService demoService() {
-        return new DemoServiceImpl();
     }
 
 }

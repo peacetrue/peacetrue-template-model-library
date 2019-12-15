@@ -1,6 +1,7 @@
 package com.github.peacetrue.demo.service;
 
 import com.github.peacetrue.spring.util.BeanUtils;
+import io.github.benas.randombeans.api.EnhancedRandom;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,11 +23,10 @@ public class DemoServiceImplTest {
     @Autowired
     private DemoService demoService;
 
-    public static final DemoAdd DEMO_ADD = new DemoAdd();
+    //TODO EnhancedRandom 泛型生成类型错误
+    public static final DemoAdd DEMO_ADD = EnhancedRandom.random(DemoAdd.class);
 
     static {
-        DEMO_ADD.setCode("2");
-        DEMO_ADD.setName("2");
         DEMO_ADD.setOperatorId("1");
     }
 
