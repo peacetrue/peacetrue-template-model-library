@@ -23,7 +23,7 @@ allprojects { project ->
             inheritOutputDirs = false
             outputDir = tasks.compileJava.destinationDir
             testOutputDir = tasks.compileTestJava.destinationDir
-            downloadSources = true
+            downloadSources = false
             downloadJavadoc = false
         }
     }
